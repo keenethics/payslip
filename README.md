@@ -1,5 +1,5 @@
 # Payslip
-
+## <span style="color:red">DEPRECATED!!</span>
 ## Introduction
 Payslip is [Container-bound Script](https://developers.google.com/apps-script/guides/bound), for google sheet. It can help you send payslips only by one button click! Enjoy 😉
 
