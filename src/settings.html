@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <style>
+     #settings-form input {
+       width: 100%;
+     }
+    </style>
+    <script>
+      function onSuccessSave(data) {
+        console.log({ savedSettings: data });
+        google.script.run
+          .withSuccessHandler(isOk => {
+            if (isOk) google.script.host.close();
+          })
+          .showSuccessSavedSettingsAlert();
+      };
+      
+      window.addEventListener('load', () => {
+      
+        const form = document.querySelector('#settings-form');
+        form.addEventListener('submit', submitSettingsForm);
+        
+        function onSuccessSettingsLoad(settings) {
+          fillInputsWithValues(settings);
+        };
+        
+        function fillInputsWithValues(data) {
+          Array.from(form.elements).forEach(input => {
+            const prop = input.name;
+            if(!prop) return;
+            input.value = data[prop] || '';
+          });
+        };
+        
+        function makeFormDataObject() {
+          return Array.from(form.elements).reduce((formData, input) => {
+            const prop = input.name;
+            if(prop) {
+              formData[prop] = input.value || '';
+            }
+            return formData;
+          }, {});
+        };
+        
+        function submitSettingsForm(event) {
+          event.preventDefault();
+          google.script.run
+            .withSuccessHandler(onSuccessSave)
+            .setSettingsData(makeFormDataObject());
+        }
+        
+        google.script.run
+          .withSuccessHandler(onSuccessSettingsLoad)
+          .getSettings();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <form id="settings-form">
+        <div class="block form-group">
+          <label for="template-label"><b><?= t('Duplicate message to') ?>:</b></label>
+          <input name="bcc" type="email">
+        </div>
+        <div class="block">
+          <button class="action"><?= t('Save settings') ?></button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+

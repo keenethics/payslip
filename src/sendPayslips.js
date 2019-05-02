@@ -13,10 +13,13 @@ function sendPayslips(payslips) {
     
     const body = interpolate(template.getBody());
     const subject = interpolate(template.getSubject());
+    const bcc = scriptProperties.getProperty('bcc');
+    
+    if (!bcc) throw new Error(t('Please fill: Payslip > Settings > Duplicate message to'));
   
     GmailApp.sendEmail(payslip.email, subject, null, {
       htmlBody: body,
-      bcc: 'BCC_RECIPIENT'
+      bcc: bcc
     });
   }
   
