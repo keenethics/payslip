@@ -20,7 +20,15 @@ function i18n(locale) {
      'Settings successfully saved': 'Налаштування успішно збережено'
   };
   
-  const en = {};
+  const en = {
+    'Send {{count}} payslips?': {
+      compute: function(values) {
+        if (values.count === 0) return 'Choose an addressee.';
+        if (values.count === 1) return 'Send one payslip?';
+        return 'Send {{count}} payslips?';
+      }
+     }
+  };
 
   function init(translations) {
     return function t(key, values) {      

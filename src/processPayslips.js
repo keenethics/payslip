@@ -4,6 +4,7 @@ function processPayslips() {
 }
 
 function processSelectedPayslips() {
+  var EMPTY_STRING = '';
   var data = generateData();
   
   var filteredData = [];
@@ -14,11 +15,13 @@ function processSelectedPayslips() {
     }
   }
   
-  var ui = SpreadsheetApp.getUi(); 
+  var ui = SpreadsheetApp.getUi();
+  
   var result = ui.alert(
-     t('Send {{count}} payslips?', { count: filteredData.length }),
-     '',
-      ui.ButtonSet.YES_NO);
+    EMPTY_STRING,
+    t('Send {{count}} payslips?', { count: filteredData.length }),
+     filteredData.length ? ui.ButtonSet.YES_NO : ui.ButtonSet.OK
+  );
       
   if (result == ui.Button.YES) {
     sendPayslips(filteredData);

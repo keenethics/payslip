@@ -6,7 +6,11 @@ function sendPayslips(payslips) {
   const sendPayslipEmail = function (payslip) {
   
     const interpolate = function (str) {
-      return str.replace(/{{([a-zA-Z_]+)}}/g, function(match, variable){
+      var withoutHTML = str.replace(/{{(.+?)}}/g, function (m, g) {
+        return '{{' + g.replace(/<[^>]*>/g, '') + '}}';
+      });
+            
+      return withoutHTML.replace(/{{([a-zA-Z_]+)}}/g, function(match, variable){
         return payslip[variable];
       });
     };
