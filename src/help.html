@@ -2,13 +2,129 @@
 <html>
   <head>
     <base target="_top">
+    <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    </style>
   </head>
   <body>
-    <h1>Help</h1>
-    <ol>
-      <li>First question</li>
-      <li>Second question</li>
-    </ol>
+    <h1>Опис колонок та темплейту</h1>
+    
+    <p>Опис буде зроблений у наступному форматі:</p>
+    
+    <!-- <p>[Назва колонки у таблиці] - [назва змінної] - [сам опис]</p> -->
+    
+    <table  class="tg">
+      <thead>
+        <th>Назва колонки</th>
+        <th>Змінна</th>
+        <th>Опис</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ім’я</td>
+          <td>name</td>
+          <td>ця колонка впливає на тему листа, тобто на пошту буде приходити тема листа у наступному форматі: Payslip - [name]</td>
+        </tr>
+        <tr>
+          <td>Pay period start</td>
+          <td>payPeriodStart</td>
+          <td>призначена для дати, з якої розпочинається період нарахування за роботу в певному місяці</td>
+        </tr>
+        <tr>
+          <td>Pay period end</td>
+          <td>payPeriodEnd</td>
+          <td>призначена для дати, кінця нарахування за роботу в певному місяці</td>
+        </tr>
+        <tr>
+          <td>Коэффициент</td>
+          <td>coef</td>
+          <td>у темлейті впливає на рядок “Monthly Earning”, а у таблиці впливає на <b>З/пл грязными $</b></td>
+        </tr>
+        <tr>
+          <td>Месячный платёж</td>
+          <td>cur__wage</td>
+          <td> у темлейті впливає на рядок <b>“Monthly Earning”</b></td>
+        </tr>
+        <tr>
+          <td>Овертаймы</td>
+          <td>cur__overtimeEarnings</td>
+          <td>у темлейті відображається як у полі Overtime, а у таблиці впливає на <b>З/пл грязными $</b></td>
+        </tr>
+        <tr>
+          <td>Другие начисления</td>
+          <td>cur__otherEarnings</td>
+          <td>у темлейті відображається як у полі Other, а у таблиці впливає на <b>З/пл грязными $</b></td>
+        </tr>
+        <tr>
+          <td>З/пл грязными $</td>
+          <td>cur__totalEarnings</td>
+          <td>у темлейті відображається у полі <b>Total Earnings</b>, важливе зауваження, ця колонка не призначена для змін, значення обчислюються автоматино</td>
+        </tr>
+        <tr>
+          <td>Курс</td>
+          <td>cur__forexRate</td>
+          <td>у темлейті відображається у полі <b>Forex rate per 1 USD</b></td>
+        </tr>
+        <tr>
+          <td>Компенсація Оренди</td>
+          <td>cur__rentCompensation</td>
+          <td>це внутрішні значення які відображаються тільки у таблиці і на суми не пливають</td>
+        </tr>
+        <tr>
+          <td>З/пл грязными UAH</td>
+          <td>cur__totalEarnings_UAH</td>
+          <td>у темлейті не відображається, впливає на колонку <b>На карточку,грн</b></td>
+        </tr>
+        <tr>
+          <td>Аванс</td>
+          <td>cur__UAH_deduction__advance</td>
+          <td>у темлейті не відображається, впливає на колонку <b>На карточку,грн</b></td>
+        </tr>
+        <tr>
+          <td>Бухг.</td>
+          <td>cur__UAH_deduction_accountingService</td>
+          <td>у темлейті не відображається, впливає на колонку <b>Бухг. USD</b></td>
+        </tr>
+        <tr>
+          <td>ЕСВ</td>
+          <td>cur__UAH_deduction_unifiedSocialFee</td>
+          <td>у темлейті не відображається, впливає на колонку <b>ЕСВ USD</b></td>
+        </tr>
+        <tr>
+          <td>ЕН</td>
+          <td>cur__UAH_deduction__unifiedTax</td>
+          <td>у темлейті не відображається, впливає на колонку <b>ЕН USD</b></td>
+        </tr>
+        <tr>
+          <td>Комісія банку</td>
+          <td>cur__UAH_deduction__bankFees</td>
+          <td>у темлейті не відображається, впливає на колонку <b>Комісія банку USD</b></td>
+        </tr>
+        <tr>
+          <td>Другие удержания</td>
+          <td>cur__UAH_deduction__others</td>
+          <td>у темлейті не відображається, впливає на колонку <b>Другие удержания USD</b></td>
+        </tr>
+        <tr>
+          <td>На карточку,грн</td>
+          <td>cur__takeHomePayment</td>
+          <td>у темлейті відображається у полі <b>Take Home Pay UAH</b></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>email</td>
+          <td>у цій колонці вказується емейл працівника, на який потрібно відправити лист</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>selected</td>
+          <td>потрібно поставити галочки навпроти кожного, кому треба відправити емейл</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Усі інші поля автоматично обраховуються, тому змінювати їх не потрібно.</p>
   </body>
 </html>
 
