@@ -16,8 +16,14 @@ You on the right way 🤘
 3. In local project folder, go to <b>assets</b>. Import file <b>Payslip Template.docx</b> in to your Google docs.
 4. Open your Gmail and create empty email draft.
 5. Copy all content of the file in Google docs into this email draft.
-6. Add some subject to the your draft.
+6. Add some subject to the your draft. Example: `MC: Payslip for {{month}} {{name}}`.
+
+<img src="./assets/template.png">
+
 7. Add label <b>payslip-template</b> to this draft.
+
+<img src="./assets/label.png">
+
 8. Close the draft email.
 
 ## Done 🏆
