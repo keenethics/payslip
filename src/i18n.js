@@ -17,7 +17,9 @@ function i18n(locale) {
      'Duplicate message to': 'Дублювати повідомлення на',
      'Save settings': 'Зберегти налаштування',
      'Please fill: Payslip > Settings > Duplicate message to': 'Будь ласка, заповніть: Платіжний лист > Налаштування > Дублювати повідомлення на',
-     'Settings successfully saved': 'Налаштування успішно збережено'
+     'Settings successfully saved': 'Налаштування успішно збережено',
+     'Error on getting email draft': 'Помилка при отриманні шаблону повідомлення',
+     'You did not add "payslip-template" label to the email draft': 'Ви не додали "payslip-template" мітку до шаблону повідомлення'
   };
   
   const en = {

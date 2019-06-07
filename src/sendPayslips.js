@@ -1,7 +1,20 @@
 function sendPayslips(payslips) {
-  const label = GmailApp.getUserLabelByName("payslip-template");
-  const thread = label.getThreads()[0];
-  const template = thread.getMessages()[0];
+  function showDraftLabelErrorMessage() {
+    const ui = SpreadsheetApp.getUi();
+    const result = ui.alert(
+      t('Error on getting email draft'),
+      t('You did not add "payslip-template" label to the email draft'),
+      ui.ButtonSet.OK
+    );
+  }
+  
+  try {
+    var label = GmailApp.getUserLabelByName("payslip-template");
+    var thread = label.getThreads()[0];
+    var template = thread.getMessages()[0];
+  } catch(err) {
+    return showDraftLabelErrorMessage();
+  }
   
   const sendPayslipEmail = function (payslip) {
   
